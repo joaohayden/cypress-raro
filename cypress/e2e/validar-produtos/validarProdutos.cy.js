@@ -74,17 +74,21 @@ it("Verificar se o botão 'Remove' na listagem de produtos remove o item do carr
 })
 
 it.only("Verificar se o botão 'Remove' na página do produto remove o item do carrinho", () => {
-  cy.get('[data-test="inventory-item-name"]').first().click()
-  cy.get('[data-test="add-to-cart"]').click()
-  cy.get('[data-test="remove"]').should('exist')
-  cy.get('[data-test="remove"]').click()
-  cy.get('[data-test="add-to-cart"]').should('exist')
-  cy.get('[data-test="shopping-cart-badge"]').should('not.exist')
-  cy.go('back')
+  cy.get('[data-test="inventory-item-name"]').then(($produtos) => {
+    
+    const total = $produtos.length
+    
+    for (let i = 0; i < total; i++) {
+      cy.get('[data-test="inventory-item-name"]').eq(i).click()
+      cy.get('[data-test="add-to-cart"]').click()
+      cy.get('[data-test="remove"]').should('exist')
+      cy.get('[data-test="shopping-cart-badge"]').should('have.text', '1')
+      cy.get('[data-test="remove"]').click()
+      cy.get('[data-test="add-to-cart"]').should('exist')
+      cy.get('[data-test="shopping-cart-badge"]').should('not.exist')
+      cy.go('back')
+    }
+  })
 })
-
-
-
-
 
 })
