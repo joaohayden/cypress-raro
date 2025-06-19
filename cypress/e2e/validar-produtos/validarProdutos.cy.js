@@ -28,26 +28,57 @@ it("Verificar se a ordenação por nome e preço funciona corretamente para o us
   cy.get('[data-test="product-sort-container"]').select("hilo")
 })
 
-it.only("Verificar se é possível adicionar todos os produtos listados", () => {
-  cy.get('[data-test^="add-to-cart-"]').each(($btn) => {
+it("Verificar se é possível adicionar ao carrinho todos os produtos listados", () => {
+cy.get('[data-test^="add-to-cart-"]').then(($botoes) => {
+    const total = $botoes.length
     
-    const dataTestAntes = $btn.attr('data-test')// pega o datatest do botao add to cart
-    const dataTestDepois = dataTestAntes.replace('add-to-cart', 'remove')// cria novo datatest esperado
+  // Clica em todos os botões e verifica se viraram "Remove"
+  cy.wrap($botoes).each(($btn) => {
+    const dataTestAntes = $btn.attr('data-test') //pega data test atual
+    const dataTestDepois = dataTestAntes.replace('add-to-cart', 'remove') //pega novo data test
 
-    cy.wrap($btn).click()
-
-    cy.get(`[data-test="${dataTestDepois}"]`).should('exist')//verifica se o botao mudou p remove
+    cy.wrap($btn).click() //clico em todos os botoes add disponiveis
+    cy.get(`[data-test="${dataTestDepois}"]`).should('exist') //verifica se mudou p remove
+  })
+    
+  cy.get('[data-test="shopping-cart-badge"]').should('have.text', `${total}`) //compara clicks com qtd add
   })
 })
 
 
 it("Verificar se o botão 'Remove' na listagem de produtos remove o item do carrinho com o usuário error_user", () => {
-  
+  cy.get('[data-test^="add-to-cart-"]').then(($botoes) => {
+    const total = $botoes.length
+    
+  // Clica em todos os botões e verifica se viraram "Remove"
+  cy.wrap($botoes).each(($btn) => {
+    const dataTestAntes = $btn.attr('data-test') //pega data test atual
+    const dataTestDepois = dataTestAntes.replace('add-to-cart', 'remove') //pega novo data test
+
+  cy.wrap($btn).click() //clico em todos os botoes add disponiveis
+  cy.get(`[data-test="${dataTestDepois}"]`).should('exist') //verifica se mudou p remove
+  })
+    
+  cy.get('[data-test="shopping-cart-badge"]').should('have.text', `${total}`) //compara clicks com qtd add
+
+  // Remove todos os produtos, um a um, e verifica se o badge vai diminuindo
+  for (let i = total - 1; i >= 0; i--) {
+    cy.get('[data-test^="remove-"]').first().click()
+    if (i > 0) {
+      cy.get('[data-test="shopping-cart-badge"]').should('have.text', `${i}`) // mostra -1 no badge
+    } else {
+      cy.get('[data-test="shopping-cart-badge"]').should('not.exist') // se zera, badge desaparece
+    }
+  }
+  })
 })
 
 it("Verificar se o botão 'Remove' na página do produto remove o item do carrinho com o usuário error_user", () => {
   
 })
+
+
+
 
 
 })
