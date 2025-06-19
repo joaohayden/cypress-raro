@@ -1,6 +1,6 @@
 # 🚀 Automação de Testes em Cypress - SauceDemo
 
-Este repositório contém testes automatizados com [Cypress](https://www.cypress.io/) para a aplicação [SauceDemo](https://www.saucedemo.com/). Os testes são feitos em ambiente web, **sem acesso ao código-fonte da aplicação**.
+Este repositório contém os testes funcionais em [Cypress](https://www.cypress.io/) da prova técnica para vaga de QA na Raro Labs. Foi utilizada a aplicação [SauceDemo](https://www.saucedemo.com/). Os testes são feitos em ambiente web, **sem acesso ao código-fonte da aplicação**.
 
 ---
 
@@ -11,7 +11,7 @@ Este repositório contém testes automatizados com [Cypress](https://www.cypress
 3. [📂 Estrutura do Projeto](#-estrutura-do-projeto)  
 4. [🧪 Testes Automatizados](#-testes-automatizados)  
 5. [🔐 Configuração do Cypress.env.json](#-configuração-do-cypressenvjson)  
-6. [🚀 Como Rodar os Testes](#como-rodar-os-testes)  
+6. [🚀 Como Rodar os Testes](#-como-rodar-os-testes)  
 
 ---
 
@@ -42,13 +42,15 @@ npm install
 cypress/
 ├── e2e/
 │   ├── login/
-│   │   └── login.cy.js
+│   │   └── login.cy.js              # Testes de login
 │   ├── ordenacao/
+│   │   └── ordenacao.cy.js          # Testes de ordenação de produtos
 │   └── validar-produtos/
+│       └── validarProdutos.cy.js    # Testes de funcionalidades com produtos
 ├── support/
-│   ├── commands.js        # Comandos customizados como login
-│   └── e2e.js             # Importa os comandos para os testes
-cypress.env.json           # Dados sensíveis (usuários e senhas)
+│   ├── commands.js                  # Comandos customizados como login
+│   └── e2e.js                       # Arquivo de suporte geral
+cypress.env.json                     # Dados sensíveis (usuários e senhas)
 .gitignore
 package.json
 README.md
@@ -60,11 +62,15 @@ README.md
 
 Os testes atualmente cobrem:
 
-✅ Login (usuário válido, inválido e outros tipos)
+✅ Login (usuário válido, inválido e tipos específicos)
 
 ✅ Ordenação de produtos por nome e preço
 
-✅ Validações específicas com usuários problemáticos (`error_user`, etc)
+✅ Validação de botões "Add to cart" e "Remove"
+
+✅ Verificação do carrinho (quantidade, inclusão e remoção)
+
+✅ Comportamentos esperados e falhas com usuários problemáticos (error_user, etc)
 
 ---
 
