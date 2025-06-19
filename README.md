@@ -6,12 +6,12 @@ Este repositório contém testes automatizados com [Cypress](https://www.cypress
 
 ## 📌 Índice
 
-1. [⚙️ Pré-requisitos](#Pré-requisitos)  
-2. [📥 Instalação e Configuração](#Instalação-e-Configuração)  
-3. [📂 Estrutura do Projeto](#Estrutura-do-Projeto)  
-4. [🧪 Testes Automatizados](#Testes-Automatizados)  
-5. [🔐 Configuração do Cypress.env.json](#Configuração-do-Cypressenvjson)  
-6. [🚀 Como Rodar os Testes](#Como-Rodar-os-Testes)  
+1. [⚙️ Pré-requisitos](#%EF%B8%8F-pré-requisitos)  
+2. [📥 Instalação e Configuração](#-instalação-e-configuração)  
+3. [📂 Estrutura do Projeto](#-estrutura-do-projeto)  
+4. [🧪 Testes Automatizados](#-testes-automatizados)  
+5. [🔐 Configuração do Cypress.env.json](#-configuração-do-cypressenvjson)  
+6. [🚀 Como Rodar os Testes](#como-rodar-os-testes)  
 
 ---
 

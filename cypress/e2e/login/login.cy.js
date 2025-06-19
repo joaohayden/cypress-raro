@@ -1,3 +1,5 @@
+const {users, password} = Cypress.env()
+
 function verifyErrorMessage(expectedText) {
   cy.get('[data-test="error"]')
     .should('be.visible')
@@ -9,7 +11,6 @@ describe('Testes de Login', () => {
 beforeEach(() => {
     cy.visit('https://saucedemo.com/')
 })
-
 //para evitar que dados sejam expostos no teste e no git, movi os casos de teste de login para o arquivo cypress/support/commands.js. As senhas e usuários são armazenados em cypress.env.json
 
 it('Verificar login realizado com sucesso utilizando usuário e senha válidos', () => {
