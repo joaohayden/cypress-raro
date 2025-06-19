@@ -13,7 +13,7 @@
 // ************************************************************
 
 
-// Para verificar os erros, troque o usuário para "error" no cy.loginSauce
+// Para o teste quebrar, pode utilizar o usuário "error" no cy.loginSauce
 
 describe("Validação de produtos utilizando usuário padrão", () => {
 
@@ -21,11 +21,14 @@ beforeEach(() => {
     cy.loginSauce("standard")
 })
 
-it("Verificar se a ordenação por nome e preço funciona corretamente para o usuário error_user", () => {
+it("Verificar se todas as ordenações funcionam corretamente para o usuário logado", () => {
   cy.on('window:alert', (msgErro) => {
     expect(msgErro, "Erro foi encontrado na ordenação").to.not.contain("Sorting is broken!")
   })
   cy.get('[data-test="product-sort-container"]').select("hilo")
+  cy.get('[data-test="product-sort-container"]').select("lohi")
+  cy.get('[data-test="product-sort-container"]').select("az")
+  cy.get('[data-test="product-sort-container"]').select("za")
 })
 
 it("Verificar se é possível adicionar ao carrinho todos os produtos listados", () => {
@@ -73,7 +76,7 @@ it("Verificar se o botão 'Remove' na listagem de produtos remove o item do carr
   })
 })
 
-it.only("Verificar se o botão 'Remove' na página do produto remove o item do carrinho", () => {
+it("Verificar se o botão 'Remove' na página do produto remove o item do carrinho", () => {
   cy.get('[data-test="inventory-item-name"]').then(($produtos) => {
     
     const total = $produtos.length
