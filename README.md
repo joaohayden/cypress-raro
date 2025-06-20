@@ -7,7 +7,7 @@ Este repositório contém os testes funcionais em [Cypress](https://www.cypress.
 ## 📌 Índice
 
 1. [⚙️ Pré-requisitos](#%EF%B8%8F-pré-requisitos)  
-2. [📥 Instalação e Configuração](#-instalação-e-configuração)  
+2. [📥 Instalação e Configuração (⚠️)](#-instalação-e-configuração)  
 3. [📂 Estrutura do Projeto](#-estrutura-do-projeto)  
 4. [🧪 Testes Automatizados](#-testes-automatizados)  
 5. [🔐 Configuração do Cypress.env.json](#-configuração-do-cypressenvjson)  
@@ -33,6 +33,36 @@ git clone https://github.com/joaohayden/cypress-raro.git
 cd cypress-raro
 npm install
 ```
+## ⚠️ IMPORTANTE: Após instalar as dependências, você deve criar manualmente o arquivo cypress.env.json na raiz do projeto.
+Esse arquivo é necessário para armazenar os usuários e a senha dos testes automatizados.
+
+Crie com os comandos abaixo:
+
+```bash
+touch cypress.env.json
+nano cypress.env.json
+```
+Cole o conteúdo abaixo dentro do arquivo:
+
+```bash
+{
+  "users": {
+    "standard": "standard_user",
+    "locked": "locked_out_user",
+    "problem": "problem_user",
+    "performance": "performance_glitch_user",
+    "error": "error_user",
+    "visual": "visual_user",
+    "invalid": "invalid_user"
+  },
+  "password": "secret_sauce"
+}
+```
+Depois, salve e feche o arquivo.
+
+Caso prefira, você também pode criar o mesmo diretamente pelo VS Code
+
+
 
 ---
 
@@ -94,6 +124,8 @@ Esse arquivo armazena os dados sensíveis (como usuários e senhas de teste) for
   "password": "secret_sauce"
 }
 ```
+> ✅ Você já criou esse arquivo na etapa de instalação acima.
+Caso precise revisar, [clique aqui para ver a estrutura](#-instalação-e-configuração).
 
 > ⚠️ **Importante**: Esse arquivo está no `.gitignore` por segurança. Crie o seu manualmente antes de rodar os testes.
 
@@ -101,7 +133,10 @@ Esse arquivo armazena os dados sensíveis (como usuários e senhas de teste) for
 
 ## 🚀 Como Rodar os Testes
 
+
 ![Demonstração dos testes](./assets/qa.gif)
+
+## Com a estrutura pronta, e também o arquivo .env, siga os passos abaixo:
 
 ### 🔍 Abrir interface interativa (GUI):
 
