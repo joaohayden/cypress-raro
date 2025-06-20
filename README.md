@@ -101,6 +101,8 @@ Esse arquivo armazena os dados sensíveis (como usuários e senhas de teste) for
 
 ## 🚀 Como Rodar os Testes
 
+![Demonstração dos testes](./assets/qa.gif)
+
 ### 🔍 Abrir interface interativa (GUI):
 
 ```bash
